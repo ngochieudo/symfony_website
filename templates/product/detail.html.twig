@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Product Detail {% endblock %}
+
+{% block body %}
+<style>
+    body {
+        width: 80%;
+        margin: 20px auto;
+    }
+</style>
+    <a class="btn btn-outline-success" href="{{ path ('product_index')}}">Back to list</a>
+    <br><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Brand</th> 
+                <th scope="col">Summary</th> 
+                <th scope="col">Price</th> 
+                <th scope="col">Quantity</th> 
+                <th scope="col">Image</th>
+                <th scope="col">Category</th> 
+                <th scope="col">Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row"> {{ product.id }} </td>
+                <td scope="row"> {{ product.name }} </td>
+                <td scope="row"> {{ product.brand }} </td>
+                <td scope="row"> {{ product.summary }} </td>
+                <td scope="row"> {{ product.price }} VND </td>
+                <td scope="row"> {{ product.quantity }} </td>
+                <td scope="row"> 
+                    {% if product.image == null %}
+                         <img src="{{ asset ('images/products/products.jpg')}}" width="80px" height="120px"> 
+                    {% else %}               
+                         <img src="{{ asset ('images/products/' ~ product.image)}}" width="80px" height="120px">  
+                    {% endif %}     
+                </td>
+                <td scope="row">
+                         <a href="{{ path ('category_detail', {'id' : product.category.id} ) }} "> 
+                                           {{ product.category.name }} 
+                         </a>
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="{{ path ('product_update', {'id' : product.id} )}}">Update</a>
+                    <a class="btn btn-danger" href="{{ path ('product_delete', {'id' : product.id} )}}"  
+                                              onclick = "return confirm ('Are you sure want to delete this product?')" >      
+                    Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

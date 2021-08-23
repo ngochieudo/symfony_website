@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Product List {% endblock %}
+
+{% block body %}
+<style>
+    body {
+        width: 80%;
+        margin: 20px auto;
+    }
+</style>
+ 
+<div class="container-fluid">
+    <div class="container">
+        {% for flash in app.flashes("Info") %}
+            <p class="alert alert-success"> {{ flash }}
+        {% endfor %}
+        {% for flash in app.flashes("Error") %}
+            <p class="alert alert-danger"> {{ flash }}
+        {% endfor %}
+    </div>
+    <a class="btn btn-outline-success" href="{{ path ('product_create') }}">CREATE NEW PRODUCT</a>
+    <br><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td scope="row"> {{ product.id }} </td>
+                <td scope="row"> {{ product.name }} </td>
+                <td scope="row"> {{ product.price }} VND </td>
+
+                <td>
+                    <a class="btn btn-warning" href="{{ path ('product_detail', {'id' : product.id} )}}">Detail</a>   
+                    <a class="btn btn-warning" href="{{ path ('product_update', {'id' : product.id} )}}">Update</a>
+                    <a class="btn btn-danger" href="{{ path ('product_delete', {'id' : product.id} )}}"  
+                                              onclick = "return confirm ('Are you sure want to delete this product?')" >      
+                    Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <h2 class="mt-5 mb-5 text-center"> UPDATE PRODUCT </h2>
+    <div class="col-md-6 offset-md-3"></div>
+    {{ form_start (form) }}
+        <div class="form-group">
+            <h6 class="text-primary"> Product Name </h6>
+            {{ form_widget (form.name, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Brand </h6>
+            {{ form_widget (form.brand, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Summary </h6>
+            {{ form_widget (form.summary, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Price (VND)</h6>
+            {{ form_widget (form.price, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Quantity </h6>
+            {{ form_widget (form.quantity, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Image </h6>
+            {{ form_widget (form.image, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group mt-2">
+            <h6 class="text-primary"> Product Category </h6>
+            {{ form_widget (form.category, {'attr' : {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group text-center mt-5">
+            <button class="btn btn-info mt-2">UPDATE</button>
+        </div>
+    {{ form_end (form) }}
+</div>
+{% endblock %}
